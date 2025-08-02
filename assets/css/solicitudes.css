@@ -1,0 +1,950 @@
+/**
+ * Estilos para Plugin Probolsas - Gestión de Solicitudes
+ * 
+ * @package ProbolsasSolicitudes
+ */
+
+/* Variables CSS */
+:root {
+    --probolsas-primary: #007cba;
+    --probolsas-primary-dark: #005a87;
+    --probolsas-secondary: #6c757d;
+    --probolsas-success: #28a745;
+    --probolsas-danger: #dc3545;
+    --probolsas-warning: #ffc107;
+    --probolsas-info: #17a2b8;
+    --probolsas-light: #f8f9fa;
+    --probolsas-dark: #343a40;
+    --probolsas-border: #dee2e6;
+    --probolsas-border-radius: 8px;
+    --probolsas-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --probolsas-shadow-lg: 0 4px 8px rgba(0,0,0,0.15);
+    --probolsas-transition: all 0.3s ease;
+}
+
+/* Contenedor principal */
+#probolsas-solicitudes-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+}
+
+/* Navegación */
+.probolsas-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--probolsas-light);
+    border-radius: var(--probolsas-border-radius);
+    border: 1px solid var(--probolsas-border);
+    box-shadow: var(--probolsas-shadow);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 2px solid var(--probolsas-primary);
+    background: white;
+    color: var(--probolsas-primary);
+    cursor: pointer;
+    border-radius: var(--probolsas-border-radius);
+    transition: var(--probolsas-transition);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: var(--probolsas-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--probolsas-shadow);
+}
+
+/* Botones */
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-danger,
+.btn-warning,
+.btn-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--probolsas-border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--probolsas-transition);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: var(--probolsas-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--probolsas-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--probolsas-shadow);
+}
+
+.btn-secondary {
+    background: var(--probolsas-secondary);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+}
+
+.btn-success {
+    background: var(--probolsas-success);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.btn-danger {
+    background: var(--probolsas-danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-warning {
+    background: var(--probolsas-warning);
+    color: var(--probolsas-dark);
+}
+
+.btn-warning:hover {
+    background: #e0a800;
+}
+
+.btn-info {
+    background: var(--probolsas-info);
+    color: white;
+}
+
+.btn-info:hover {
+    background: #138496;
+}
+
+/* Filtros */
+.filtros-container {
+    margin-bottom: 30px;
+    padding: 25px;
+    background: var(--probolsas-light);
+    border-radius: var(--probolsas-border-radius);
+    border: 1px solid var(--probolsas-border);
+    box-shadow: var(--probolsas-shadow);
+}
+
+.filtros-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: end;
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filtro-grupo label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--probolsas-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filtro-grupo input,
+.filtro-grupo select {
+    padding: 10px 12px;
+    border: 1px solid var(--probolsas-border);
+    border-radius: var(--probolsas-border-radius);
+    font-size: 14px;
+    background: white;
+    transition: var(--probolsas-transition);
+}
+
+.filtro-grupo input:focus,
+.filtro-grupo select:focus {
+    border-color: var(--probolsas-primary);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 124, 186, 0.25);
+}
+
+.filtro-acciones {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+/* Tabla */
+.tabla-container {
+    background: white;
+    border-radius: var(--probolsas-border-radius);
+    overflow: hidden;
+    box-shadow: var(--probolsas-shadow);
+    border: 1px solid var(--probolsas-border);
+}
+
+.probolsas-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.probolsas-table th {
+    background: var(--probolsas-primary);
+    color: white;
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.probolsas-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid var(--probolsas-border);
+    vertical-align: middle;
+}
+
+.probolsas-table tr:hover {
+    background: var(--probolsas-light);
+}
+
+.probolsas-table tr:last-child td {
+    border-bottom: none;
+}
+
+.loading-row {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--probolsas-secondary);
+    font-style: italic;
+}
+
+.loading-spinner .spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Estados */
+.estado {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.estado-solicitado {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.estado-proceso {
+    background: #fff3e0;
+    color: #ef6c00;
+    border: 1px solid #ffe0b2;
+}
+
+.estado-aprobado {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+/* Botones de acción en tabla */
+.btn-accion {
+    padding: 6px 12px;
+    margin: 2px;
+    border: none;
+    border-radius: var(--probolsas-border-radius);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: var(--probolsas-transition);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.btn-editar-estado {
+    background: var(--probolsas-warning);
+    color: var(--probolsas-dark);
+}
+
+.btn-editar-estado:hover {
+    background: #e0a800;
+    transform: scale(1.05);
+}
+
+.btn-editar-fecha {
+    background: var(--probolsas-info);
+    color: white;
+}
+
+.btn-editar-fecha:hover {
+    background: #138496;
+    transform: scale(1.05);
+}
+
+.btn-ver-detalle {
+    background: #6f42c1;
+    color: white;
+}
+
+.btn-ver-detalle:hover {
+    background: #5a32a3;
+    transform: scale(1.05);
+}
+
+.btn-eliminar {
+    background: var(--probolsas-danger);
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+/* Modales */
+.probolsas-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 3% auto;
+    border-radius: var(--probolsas-border-radius);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--probolsas-shadow-lg);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.modal-large .modal-content {
+    max-width: 1000px;
+}
+
+.modal-small .modal-content {
+    max-width: 400px;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--probolsas-border);
+    background: var(--probolsas-light);
+    border-radius: var(--probolsas-border-radius) var(--probolsas-border-radius) 0 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--probolsas-primary);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.modal-footer {
+    padding: 20px 25px;
+    border-top: 1px solid var(--probolsas-border);
+    background: var(--probolsas-light);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    border-radius: 0 0 var(--probolsas-border-radius) var(--probolsas-border-radius);
+}
+
+.close {
+    color: var(--probolsas-secondary);
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: var(--probolsas-transition);
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.close:hover {
+    color: var(--probolsas-danger);
+    background: rgba(220, 53, 69, 0.1);
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--probolsas-dark);
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--probolsas-border);
+    border-radius: var(--probolsas-border-radius);
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: var(--probolsas-transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--probolsas-primary);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 124, 186, 0.25);
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-group input[readonly] {
+    background-color: var(--probolsas-light);
+    cursor: not-allowed;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Mensajes de confirmación */
+.mensaje-confirmacion {
+    text-align: center;
+    padding: 20px;
+}
+
+.mensaje-confirmacion .icon-warning {
+    color: var(--probolsas-warning);
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.mensaje-confirmacion p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.mensaje-confirmacion .strong {
+    color: var(--probolsas-danger);
+    font-weight: bold;
+}
+
+/* Notificaciones */
+#probolsas-notifications {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    max-width: 400px;
+}
+
+.probolsas-notification {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: var(--probolsas-border-radius);
+    box-shadow: var(--probolsas-shadow-lg);
+    font-weight: 500;
+    animation: notificationSlideIn 0.3s ease-out;
+}
+
+@keyframes notificationSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.notification-success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.notification-error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.notification-warning {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+}
+
+.notification-info {
+    background: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+/* Calendario */
+.calendario-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--probolsas-light);
+    border-radius: var(--probolsas-border-radius);
+    border: 1px solid var(--probolsas-border);
+}
+
+.calendario-navegacion h3 {
+    margin: 0;
+    color: var(--probolsas-primary);
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.btn-nav-calendario {
+    background: var(--probolsas-primary);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: var(--probolsas-transition);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-nav-calendario:hover {
+    background: var(--probolsas-primary-dark);
+    transform: scale(1.1);
+    box-shadow: var(--probolsas-shadow);
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: var(--probolsas-border);
+    border-radius: var(--probolsas-border-radius);
+    overflow: hidden;
+    box-shadow: var(--probolsas-shadow);
+}
+
+.dia-semana {
+    background: var(--probolsas-primary);
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dia-calendario,
+.dia-vacio {
+    background: white;
+    min-height: 100px;
+    padding: 8px;
+    position: relative;
+    transition: var(--probolsas-transition);
+}
+
+.dia-calendario:hover {
+    background: var(--probolsas-light);
+}
+
+.dia-vacio {
+    background: #f8f9fa;
+}
+
+.numero-dia {
+    font-weight: bold;
+    color: var(--probolsas-dark);
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.solicitudes-dia {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.solicitud-calendario {
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: var(--probolsas-transition);
+}
+
+.solicitud-calendario:hover {
+    transform: scale(1.05);
+    box-shadow: var(--probolsas-shadow);
+}
+
+.solicitud-calendario.estado-solicitado {
+    background: #ffcdd2;
+    color: #c62828;
+}
+
+.solicitud-calendario.estado-proceso {
+    background: #ffe0b2;
+    color: #ef6c00;
+}
+
+.solicitud-calendario.estado-aprobado {
+    background: #c8e6c9;
+    color: #2e7d32;
+}
+
+/* Leyenda del calendario */
+.leyenda-calendario {
+    margin-top: 25px;
+    padding: 20px;
+    background: var(--probolsas-light);
+    border-radius: var(--probolsas-border-radius);
+    border: 1px solid var(--probolsas-border);
+}
+
+.leyenda-calendario h4 {
+    margin: 0 0 15px 0;
+    color: var(--probolsas-primary);
+    font-size: 16px;
+}
+
+.leyenda-items {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.color-solicitado,
+.color-proceso,
+.color-aprobado {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.color-solicitado {
+    background: #ffcdd2;
+}
+
+.color-proceso {
+    background: #ffe0b2;
+}
+
+.color-aprobado {
+    background: #c8e6c9;
+}
+
+/* Gestión de procesos */
+.procesos-actions {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.procesos-lista {
+    background: white;
+    border-radius: var(--probolsas-border-radius);
+    overflow: hidden;
+    border: 1px solid var(--probolsas-border);
+}
+
+/* Detalle de solicitud */
+.detalle-info {
+    margin-top: 20px;
+}
+
+.detalle-info p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+}
+
+.detalle-info strong {
+    color: var(--probolsas-primary);
+    display: inline-block;
+    min-width: 180px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+/* Estados responsive de botones */
+@media (hover: hover) {
+    .nav-btn:not(.active):hover {
+        transform: translateY(-2px);
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-success:hover,
+    .btn-danger:hover,
+    .btn-warning:hover,
+    .btn-info:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--probolsas-shadow);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #probolsas-solicitudes-container {
+        padding: 15px;
+    }
+    
+    .filtros-row {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .probolsas-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-buttons,
+    .nav-actions {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .filtros-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .filtro-acciones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .probolsas-table {
+        font-size: 12px;
+    }
+    
+    .probolsas-table th,
+    .probolsas-table td {
+        padding: 10px 8px;
+    }
+    
+    .btn-accion {
+        display: block;
+        width: 100%;
+        margin: 2px 0;
+        font-size: 10px;
+    }
+    
+    .modal-content {
+        margin: 2% 5%;
+        width: 90%;
+        max-height: 95vh;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 15px 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .calendario-grid {
+        font-size: 12px;
+    }
+    
+    .dia-calendario {
+        min-height: 80px;
+        padding: 5px;
+    }
+    
+    .numero-dia {
+        font-size: 14px;
+    }
+    
+    .solicitud-calendario {
+        font-size: 9px;
+        padding: 2px 4px;
+    }
+    
+    .leyenda-items {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    #probolsas-solicitudes-container {
+        padding: 10px;
+    }
+    
+    .modal-content {
+        margin: 5px;
+        width: calc(100% - 10px);
+        max-height: calc(100vh - 10px);
+    }
+    
+    .modal-header h2 {
+        font-size: 18px;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-primary,
+    .btn-secondary,
+    .btn-success,
+    .btn-danger,
+    .btn-warning,
+    .btn-info {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    #probolsas-notifications {
+        left: 10px;
+        right: 10px;
+        top: 10px;
+        max-width: none;
+    }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Modo oscuro (si está disponible) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --probolsas-light: #2d3748;
+        --probolsas-dark: #e2e8f0;
+        --probolsas-border: #4a5568;
+    }
+}
